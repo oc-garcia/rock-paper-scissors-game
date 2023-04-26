@@ -1,7 +1,11 @@
-import "./App.css";
+import "./globals.css";
 
 function App() {
-  return <div>Rock, Paper, Scissors</div>;
+  return (
+    <main>
+      <section>Rock Papper Scissors</section>
+    </main>
+  );
 }
 
 export default App;
