@@ -1,7 +1,9 @@
 import React from "react";
 import ScoreBoard from "../Components/ScoreBoard/ScoreBoard";
 
-export default function ClassicGame() {
+type Props = {};
+
+export default function ClassicGame({}: Props) {
   return (
     <main>
       <ScoreBoard />

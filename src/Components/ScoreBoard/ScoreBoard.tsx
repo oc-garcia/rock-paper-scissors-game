@@ -1,7 +1,10 @@
 import React from "react";
 import logoClassic from "./logo.svg";
 import styles from "./ScoreBoard.module.css";
-export default function ScoreBoard() {
+
+type Props = {};
+
+export default function ScoreBoard({}: Props) {
   return (
     <header className={styles.headerContainer}>
       <img src={logoClassic} alt="logo" className={styles.logo} />
