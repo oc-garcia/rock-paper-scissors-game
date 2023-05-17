@@ -1,4 +1,3 @@
-import React from "react";
 import ScoreBoard from "../Components/ScoreBoard/ScoreBoard";
 
 type Props = {};

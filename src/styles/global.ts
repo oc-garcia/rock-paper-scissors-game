@@ -1,5 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap");
+import { createGlobalStyle } from "styled-components";
 
+export const GlobalStyle = createGlobalStyle`
 :root {
   --Scissors-Gradient: linear-gradient(hsl(39, 89%, 49%), hsl(40, 84%, 53%));
   --Paper-Gradient: linear-gradient(hsl(230, 89%, 62%), hsl(230, 89%, 65%));
@@ -31,3 +32,4 @@ body {
   justify-content: center;
   flex-direction: column;
 }
+    `;
