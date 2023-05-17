@@ -1,9 +1,12 @@
+import GameChoice from "../GameChoice/GameChoice";
+import { GameElementContainer } from "./style";
+
 export default function GameElement() {
   return (
-    <section>
-        <div>
-            <img src='' alt=''/>
-        </div>
-    </section>
-  )
+    <GameElementContainer>
+      <GameChoice />
+      <GameChoice />
+      <GameChoice />
+    </GameElementContainer>
+  );
 }
