@@ -6,10 +6,8 @@ import closeIcon from "./icon-close.svg";
 
 Modal.setAppElement("#root");
 
-type Props = {};
-
-export default function Footer({}: Props) {
-  const [modal, setModal] = useState(false);
+export default function Footer() {
+  const [modal, setModal] = useState<boolean>(false);
 
   const handleModal = () => {
     setModal(!modal);
