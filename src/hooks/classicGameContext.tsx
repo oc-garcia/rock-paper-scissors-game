@@ -4,10 +4,15 @@ interface IPhase {
   phase1: boolean;
   phase2: boolean;
   phase3: boolean;
-  handlePhase1?: React.Dispatch<React.SetStateAction<string>>;
+  handlePhase1?: (value: string) => void;
 }
 
-export const GameContext = createContext({});
+interface Icards {
+  player: string;
+  pc: string;
+}
+
+export const GameContext = createContext({} as GameContext);
 
 export const GameProvider = ({ children }: { children: React.ReactNode }) => {
   const [phase, setPhase] = useState<IPhase>({
@@ -16,8 +21,30 @@ export const GameProvider = ({ children }: { children: React.ReactNode }) => {
     phase3: false,
   });
 
-  const handlePhase1 = () => {
+  const [cards, setCards] = useState<Icards>({
+    player: "",
+    pc: "",
+  });
+
+  const elementPicker = (prmt: string) => {
+    console.log(prmt);
+    const options = ["paper", "scissor", "rock"];
+
+    const randomIndex = Math.floor(Math.random() * 3);
+    if (options[randomIndex] !== prmt) {
+      setCards({
+        player: prmt,
+        pc: options[randomIndex],
+      });
+      console.log(cards);
+    } else {
+      elementPicker(prmt);
+    }
+  };
+
+  const handlePhase1 = (prmt: string) => {
     setPhase({ ...phase, phase1: false, phase2: true });
+    elementPicker(prmt);
   };
 
   const handlePhase2 = () => {
