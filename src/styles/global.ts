@@ -2,10 +2,10 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 :root {
-  --Scissors-Gradient: linear-gradient(hsl(39, 89%, 49%), hsl(40, 84%, 53%));
-  --Paper-Gradient: linear-gradient(hsl(230, 89%, 62%), hsl(230, 89%, 65%));
-  --Rock-Gradient: linear-gradient(hsl(349, 71%, 52%), hsl(349, 70%, 56%));
-  --Lizard-Gradient: linear-gradient(hsl(261, 73%, 60%), hsl(261, 72%, 63%));
+  --Scissors: hsl(39, 89%, 49%);
+  --Paper: hsl(230, 89%, 62%);
+  --Rock: hsl(349, 71%, 52%);
+  --Lizard: hsl(261, 73%, 60%);
   --Cyan: linear-gradient(hsl(189, 59%, 53%), hsl(189, 58%, 57%));
 
   --Dark-Text: hsl(229, 25%, 31%);

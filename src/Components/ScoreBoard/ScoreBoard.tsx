@@ -1,17 +1,13 @@
 import logoClassic from "./logo.svg";
 import { HeaderContainer } from "./styles";
 
-type Props = {
-  score: number;
-};
-
-export default function ScoreBoard({ score }: Props) {
+export default function ScoreBoard() {
   return (
     <HeaderContainer>
       <img src={logoClassic} alt="logo" />
       <div>
         <h1>Score</h1>
-        <p>{score}</p>
+        <p>12</p>
       </div>
     </HeaderContainer>
   );

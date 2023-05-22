@@ -26,7 +26,7 @@ export const HeaderContainer = styled.header`
     border-radius: 10px;
 
     & p {
-      font-size: 4rem;
+      font-size: 3rem;
     }
   }
 `;

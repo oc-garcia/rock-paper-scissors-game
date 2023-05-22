@@ -18,6 +18,14 @@ export const FooterContainer = styled.footer`
   }
 `;
 
-export const triangleLayout = styled.div`
+export const ModalContainer = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 
-`
+  & h2 {
+    color: var(--Dark-Text);
+  }
+`;
