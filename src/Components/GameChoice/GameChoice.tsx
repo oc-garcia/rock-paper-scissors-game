@@ -1,9 +1,10 @@
-import { GameChoiceContainer } from "./styles"
+import { IGameElements } from "../../types/IGameElement";
+import { GameChoiceContainer } from "./styles";
 
-type Props = {}
-
-export default function GameChoice({}: Props) {
+export default function GameChoice({ icon, element, borderColor }: IGameElements) {
   return (
-    <GameChoiceContainer>GameChoice</GameChoiceContainer>
-  )
+    <GameChoiceContainer border={`${borderColor}`}>
+      <img src={icon} alt={element} />
+    </GameChoiceContainer>
+  );
 }

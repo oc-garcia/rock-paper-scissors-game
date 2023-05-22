@@ -1,10 +1,14 @@
 import { styled } from "styled-components";
 
-export const GameChoiceContainer = styled.div`
+interface Props {
+  border: string;
+}
+
+export const GameChoiceContainer = styled.div<Props>`
   height: 18vh;
   width: 18vh;
   background-color: white;
-  border: 12px solid tomato;
+  border: 12px solid ${(props) => props.border};
   border-radius: 50%;
   display: flex;
   align-items: center;

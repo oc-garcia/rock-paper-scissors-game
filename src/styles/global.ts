@@ -26,7 +26,7 @@ export const GlobalStyle = createGlobalStyle`
 body {
   background: var(--BG-Gradient);
   min-height: 100vh;
-  min-width: 100vw;
+  max-width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
