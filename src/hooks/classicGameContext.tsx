@@ -26,8 +26,9 @@ export const GameProvider = ({ children }: { children: React.ReactNode }) => {
     pc: "",
   });
 
+  const [score, setScore] = useState<number>(0);
+
   const elementPicker = (prmt: string) => {
-    console.log(prmt);
     const options = ["paper", "scissor", "rock"];
 
     const randomIndex = Math.floor(Math.random() * 3);
@@ -36,15 +37,14 @@ export const GameProvider = ({ children }: { children: React.ReactNode }) => {
         player: prmt,
         pc: options[randomIndex],
       });
-      console.log(cards);
     } else {
       elementPicker(prmt);
     }
   };
 
   const handlePhase1 = (prmt: string) => {
-    setPhase({ ...phase, phase1: false, phase2: true });
     elementPicker(prmt);
+    setPhase({ ...phase, phase1: false, phase2: true });
   };
 
   const handlePhase2 = () => {
@@ -60,6 +60,8 @@ export const GameProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   return (
-    <GameContext.Provider value={{ phase, handlePhase1, handlePhase2, handlePhase3 }}>{children}</GameContext.Provider>
+    <GameContext.Provider value={{ phase, handlePhase1, handlePhase2, handlePhase3, cards, score }}>
+      {children}
+    </GameContext.Provider>
   );
 };
