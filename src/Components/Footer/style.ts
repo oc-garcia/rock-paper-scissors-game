@@ -28,4 +28,12 @@ export const ModalContainer = styled.div`
   & h2 {
     color: var(--Dark-Text);
   }
+
+  & img{
+    width: 100%;
+  }
+
+  & img:last-child{
+    width: 10%;
+  }
 `;
