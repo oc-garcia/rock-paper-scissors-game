@@ -1,18 +1,43 @@
-import React, { createContext, useState } from "react";
+import React, { Dispatch, SetStateAction, createContext, useState } from "react";
 
-interface IPhase {
+export interface IPhase {
   phase1: boolean;
   phase2: boolean;
   phase3: boolean;
-  handlePhase1?: (value: string) => void;
 }
 
-interface Icards {
+export interface Icards {
   player: string;
   pc: string;
 }
 
-export const GameContext = createContext({} as GameContext);
+export interface IGameContext {
+  phase: IPhase;
+  setPhase?: Dispatch<SetStateAction<IPhase>>;
+  handlePhase1: (prmt: string) => void;
+  handlePhase2: (prmt: string) => void;
+  handlePhase3: (prmt: string) => void;
+  cards: Icards;
+  setCards?: (cards: Icards) => void;
+  elementPicker?: (prmt: string) => void;
+  score: number;
+  setScore?: Dispatch<SetStateAction<number>>;
+}
+
+const defaultState = {
+  phase: {
+    phase1: true,
+    phase2: false,
+    phase3: false,
+  },
+  cards: {
+    player: "",
+    pc: "",
+  },
+  score: 0,
+} as IGameContext;
+
+export const GameContext = createContext(defaultState);
 
 export const GameProvider = ({ children }: { children: React.ReactNode }) => {
   const [phase, setPhase] = useState<IPhase>({
@@ -32,14 +57,10 @@ export const GameProvider = ({ children }: { children: React.ReactNode }) => {
     const options = ["paper", "scissor", "rock"];
 
     const randomIndex = Math.floor(Math.random() * 3);
-    if (options[randomIndex] !== prmt) {
-      setCards({
-        player: prmt,
-        pc: options[randomIndex],
-      });
-    } else {
-      elementPicker(prmt);
-    }
+    setCards({
+      player: prmt,
+      pc: options[randomIndex],
+    });
   };
 
   const handlePhase1 = (prmt: string) => {

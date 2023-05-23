@@ -12,3 +12,12 @@ export const Phase1Container = styled.section`
   background-size: 80%;
   flex-wrap: wrap;
 `;
+
+export const Phase2Container = styled.section`
+  margin: 15vh 0;
+  height: 40vh;
+  width: 95vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+`;
