@@ -42,16 +42,17 @@ export default function GameElement() {
 
   const handleTable2 = () => {
     const playerSetup = tableSetup.filter((key) => key.name === cards.player);
+    const pcSetup = tableSetup.filter((key) => key.name === cards.pc);
     setPhase2Cards({
       player: {
-        name: playerSetup.name,
-        icon: playerSetup.icon,
-        color: playerSetup.color,
+        name: playerSetup[0]?.name,
+        icon: playerSetup[0]?.icon,
+        color: playerSetup[0]?.color,
       },
       pc: {
-        name: "",
-        icon: "",
-        color: "",
+        name: pcSetup[0]?.name,
+        icon: pcSetup[0]?.icon,
+        color: pcSetup[0]?.color,
       },
     });
     console.log(playerSetup);
