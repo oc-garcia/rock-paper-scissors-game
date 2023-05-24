@@ -7,6 +7,12 @@ import paperIcon from "./icon-paper.svg";
 import rockIcon from "./icon-rock.svg";
 import scissorIcon from "./icon-scissors.svg";
 
+export interface IHand {
+  name: string;
+  icon: string;
+  color: string;
+}
+
 const tableSetup = [
   {
     name: "paper",
@@ -25,25 +31,28 @@ const tableSetup = [
   },
 ];
 
+const defaultState = {
+  player: {
+    name: "",
+    icon: "",
+    color: "",
+  },
+  pc: {
+    name: "",
+    icon: "",
+    color: "",
+  },
+};
+
 export default function GameElement() {
   const { phase, cards } = useContext(GameContext);
-  const [phase2Cards, setPhase2Cards] = useState({
-    player: {
-      name: "",
-      icon: "",
-      color: "",
-    },
-    pc: {
-      name: "",
-      icon: "",
-      color: "",
-    },
-  });
+  const [phase2Cards, setPhase2Cards] = useState(defaultState);
 
   const handleTable2 = () => {
     const playerSetup = tableSetup.filter((key) => key.name === cards.player);
     const pcSetup = tableSetup.filter((key) => key.name === cards.pc);
     setPhase2Cards({
+      ...phase2Cards,
       player: {
         name: playerSetup[0]?.name,
         icon: playerSetup[0]?.icon,
@@ -55,7 +64,6 @@ export default function GameElement() {
         color: pcSetup[0]?.color,
       },
     });
-    console.log(playerSetup);
   };
 
   useEffect(() => {
