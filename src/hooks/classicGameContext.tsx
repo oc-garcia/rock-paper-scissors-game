@@ -20,6 +20,7 @@ export interface IGameContext {
   elementPicker?: (prmt: string) => void;
   score: number;
   setScore: Dispatch<SetStateAction<number>>;
+  handleScore: (prmt: number) => void;
 }
 
 const defaultState = {
@@ -68,8 +69,12 @@ export const GameProvider = ({ children }: { children: React.ReactNode }) => {
     setPhase({ phase1: true, phase2: false });
   };
 
+  const handleScore = (prmt: number) => {
+    setScore(prmt + score);
+  };
+
   return (
-    <GameContext.Provider value={{ phase, handlePhase1, resetTable, cards, score, setScore }}>
+    <GameContext.Provider value={{ phase, handlePhase1, resetTable, cards, score, setScore, handleScore }}>
       {children}
     </GameContext.Provider>
   );

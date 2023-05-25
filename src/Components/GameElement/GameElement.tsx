@@ -45,7 +45,7 @@ const defaultState = {
 };
 
 export default function GameElement() {
-  const { phase, cards, resetTable } = useContext(GameContext);
+  const { phase, cards, resetTable, handleScore } = useContext(GameContext);
   const [phase2Cards, setPhase2Cards] = useState(defaultState);
   const [outCome, setOutCome] = useState<string>();
 
@@ -77,12 +77,14 @@ export default function GameElement() {
       (phase2Cards.player.name === "scissor" && phase2Cards.pc.name === "paper")
     ) {
       setOutCome("YOU WIN");
+      handleScore(1);
     } else if (
       (phase2Cards.pc.name === "paper" && phase2Cards.player.name === "rock") ||
       (phase2Cards.pc.name === "rock" && phase2Cards.player.name === "scissor") ||
       (phase2Cards.pc.name === "scissor" && phase2Cards.player.name === "paper")
     ) {
       setOutCome("YOU LOSE");
+      handleScore(-1);
     }
   };
 

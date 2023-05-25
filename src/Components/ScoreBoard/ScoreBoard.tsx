@@ -1,10 +1,11 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import logoClassic from "./logo.svg";
 import { HeaderContainer } from "./styles";
 import { GameContext } from "../../hooks/classicGameContext";
 
 export default function ScoreBoard() {
   const { score } = useContext(GameContext);
+  useEffect(() => {}, [score]);
   return (
     <HeaderContainer>
       <img src={logoClassic} alt="logo" />
