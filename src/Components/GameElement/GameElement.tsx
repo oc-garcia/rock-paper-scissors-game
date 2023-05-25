@@ -36,12 +36,12 @@ const defaultState = {
     name: "",
     icon: "",
     color: "",
-  },
+  } as IHand,
   pc: {
     name: "",
     icon: "",
     color: "",
-  },
+  } as IHand,
 };
 
 export default function GameElement() {
@@ -107,13 +107,24 @@ export default function GameElement() {
   if (phase.phase2) {
     return (
       <Phase2Container>
-        <GameChoice
-          icon={phase2Cards.player.icon}
-          element={phase2Cards.player.name}
-          borderColor={phase2Cards.player.color}
-        />
-        <GameChoice icon={phase2Cards.pc.icon} element={phase2Cards.pc.name} borderColor={phase2Cards.pc.color} />
-        <h2>{outCome}</h2>
+        <div>
+          <div>
+            <GameChoice
+              icon={phase2Cards.player.icon}
+              element={phase2Cards.player.name}
+              borderColor={phase2Cards.player.color}
+            />
+            <p>YOU PICKED</p>
+          </div>
+          <div>
+            <GameChoice icon={phase2Cards.pc.icon} element={phase2Cards.pc.name} borderColor={phase2Cards.pc.color} />
+            <p>THE HOUSE PICKED</p>
+          </div>
+        </div>
+        <div>
+          <h2>{outCome}</h2>
+          <button>PLAY AGAIN</button>
+        </div>
       </Phase2Container>
     );
   } else {

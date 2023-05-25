@@ -27,6 +27,7 @@ export const HeaderContainer = styled.header`
 
     & p {
       font-size: 3rem;
+      color: hsl(229, 25%, 31%);
     }
   }
 `;

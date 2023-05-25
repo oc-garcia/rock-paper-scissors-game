@@ -4,7 +4,7 @@ interface Props {
   border: string;
 }
 
-export const GameChoiceContainer = styled.div<Props>`
+export const GameChoiceContainer = styled.span<Props>`
   height: 18vh;
   width: 18vh;
   background-color: white;

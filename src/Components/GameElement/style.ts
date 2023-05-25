@@ -18,6 +18,42 @@ export const Phase2Container = styled.section`
   height: 40vh;
   width: 95vw;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-around;
+
+  & div {
+    display: flex;
+    align-items: center;
+    gap: 1rem 2rem;
+    justify-content: space-between;
+
+    & p {
+      color: white;
+    }
+
+    & h2 {
+      margin-top: 3rem;
+      font-size: 3.5rem;
+      color: white;
+    }
+
+    & button {
+      color: hsl(229, 25%, 31%);
+      padding: 1rem 5rem;
+      border-radius: 10px;
+      border: none;
+    }
+
+    & div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: column;
+    }
+  }
+
+  & div:last-child {
+    flex-direction: column;
+  }
 `;
