@@ -20,20 +20,21 @@ export const FooterContainer = styled.footer`
 
 export const ModalContainer = styled.div`
   height: 100%;
+  width: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
 
   & h2 {
     color: var(--Dark-Text);
   }
 
-  & img{
+  & img {
     width: 100%;
   }
 
-  & img:last-child{
+  & img:last-child {
     width: 10%;
   }
 `;
