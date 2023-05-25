@@ -47,28 +47,52 @@ const defaultState = {
 export default function GameElement() {
   const { phase, cards } = useContext(GameContext);
   const [phase2Cards, setPhase2Cards] = useState(defaultState);
+  const [outCome, setOutCome] = useState<string>();
 
   const handleTable2 = () => {
     const playerSetup = tableSetup.filter((key) => key.name === cards.player);
     const pcSetup = tableSetup.filter((key) => key.name === cards.pc);
-    setPhase2Cards({
-      ...phase2Cards,
-      player: {
-        name: playerSetup[0]?.name,
-        icon: playerSetup[0]?.icon,
-        color: playerSetup[0]?.color,
-      },
-      pc: {
-        name: pcSetup[0]?.name,
-        icon: pcSetup[0]?.icon,
-        color: pcSetup[0]?.color,
-      },
-    });
+    if (phase.phase2) {
+      setPhase2Cards({
+        player: {
+          name: playerSetup[0].name,
+          icon: playerSetup[0].icon,
+          color: playerSetup[0].color,
+        },
+        pc: {
+          name: pcSetup[0].name,
+          icon: pcSetup[0].icon,
+          color: pcSetup[0].color,
+        },
+      });
+    }
+  };
+
+  const handleOutcome = () => {
+    if (phase2Cards.player.name === phase2Cards.pc.name) {
+      setOutCome("DRAW");
+    } else if (
+      (phase2Cards.player.name === "paper" && phase2Cards.pc.name === "rock") ||
+      (phase2Cards.player.name === "rock" && phase2Cards.pc.name === "scissor") ||
+      (phase2Cards.player.name === "scissor" && phase2Cards.pc.name === "paper")
+    ) {
+      setOutCome("YOU WIN");
+    } else if (
+      (phase2Cards.pc.name === "paper" && phase2Cards.player.name === "rock") ||
+      (phase2Cards.pc.name === "rock" && phase2Cards.player.name === "scissor") ||
+      (phase2Cards.pc.name === "scissor" && phase2Cards.player.name === "paper")
+    ) {
+      setOutCome("YOU LOSE");
+    }
   };
 
   useEffect(() => {
     handleTable2();
   }, [cards]);
+
+  useEffect(() => {
+    handleOutcome();
+  }, [phase2Cards]);
 
   if (phase.phase1) {
     return (
@@ -89,6 +113,7 @@ export default function GameElement() {
           borderColor={phase2Cards.player.color}
         />
         <GameChoice icon={phase2Cards.pc.icon} element={phase2Cards.pc.name} borderColor={phase2Cards.pc.color} />
+        <h2>{outCome}</h2>
       </Phase2Container>
     );
   } else {
