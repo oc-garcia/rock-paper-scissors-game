@@ -48,6 +48,7 @@ export default function GameElement() {
   const { phase, cards, resetTable, handleScore } = useContext(GameContext);
   const [phase2Cards, setPhase2Cards] = useState(defaultState);
   const [outCome, setOutCome] = useState<string>();
+  const [waiting, setWaiting] = useState<boolean>(false);
 
   const handleTable2 = () => {
     const playerSetup = tableSetup.filter((key) => key.name === cards.player);
@@ -77,14 +78,23 @@ export default function GameElement() {
       (phase2Cards.player.name === "scissor" && phase2Cards.pc.name === "paper")
     ) {
       setOutCome("YOU WIN");
-      handleScore(1);
+      setTimeout(() => handleWaiting(1, true), 2000);
     } else if (
       (phase2Cards.pc.name === "paper" && phase2Cards.player.name === "rock") ||
       (phase2Cards.pc.name === "rock" && phase2Cards.player.name === "scissor") ||
       (phase2Cards.pc.name === "scissor" && phase2Cards.player.name === "paper")
     ) {
       setOutCome("YOU LOSE");
-      handleScore(-1);
+      setTimeout(() => handleWaiting(-1, true), 2000);
+    }
+  };
+
+  const handleWaiting = (prmt?: number, prmt2?: boolean) => {
+    if (prmt2) {
+      setWaiting(prmt2);
+    }
+    if (prmt) {
+      handleScore(prmt);
     }
   };
 
@@ -118,21 +128,26 @@ export default function GameElement() {
             />
             <p>YOU PICKED</p>
           </div>
+          {waiting && (
+            <div>
+              <GameChoice icon={phase2Cards.pc.icon} element={phase2Cards.pc.name} borderColor={phase2Cards.pc.color} />
+              <p>THE HOUSE PICKED</p>
+            </div>
+          )}
+        </div>
+        {waiting && (
           <div>
-            <GameChoice icon={phase2Cards.pc.icon} element={phase2Cards.pc.name} borderColor={phase2Cards.pc.color} />
-            <p>THE HOUSE PICKED</p>
+            <h2>{outCome}</h2>
+            <button
+              onClick={() => {
+                resetTable();
+                setPhase2Cards(defaultState);
+                setWaiting(false);
+              }}>
+              PLAY AGAIN
+            </button>
           </div>
-        </div>
-        <div>
-          <h2>{outCome}</h2>
-          <button
-            onClick={() => {
-              resetTable();
-              setPhase2Cards(defaultState);
-            }}>
-            PLAY AGAIN
-          </button>
-        </div>
+        )}
       </Phase2Container>
     );
   } else {
