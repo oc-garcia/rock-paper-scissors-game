@@ -78,24 +78,30 @@ export default function GameElement() {
       (phase2Cards.player.name === "scissor" && phase2Cards.pc.name === "paper")
     ) {
       setOutCome("YOU WIN");
-      setTimeout(() => handleWaiting(1, true), 2000);
+      if (phase.phase2) {
+        handleWaiting(1, true);
+      }
     } else if (
       (phase2Cards.pc.name === "paper" && phase2Cards.player.name === "rock") ||
       (phase2Cards.pc.name === "rock" && phase2Cards.player.name === "scissor") ||
       (phase2Cards.pc.name === "scissor" && phase2Cards.player.name === "paper")
     ) {
       setOutCome("YOU LOSE");
-      setTimeout(() => handleWaiting(-1, true), 2000);
+      if (phase.phase2) {
+        handleWaiting(-1, true);
+      }
     }
   };
 
-  const handleWaiting = (prmt?: number, prmt2?: boolean) => {
-    if (prmt2) {
-      setWaiting(prmt2);
-    }
-    if (prmt) {
-      handleScore(prmt);
-    }
+  const handleWaiting = (prmt: number, prmt2: boolean) => {
+    setTimeout(() => {
+      if (prmt) {
+        handleScore(prmt);
+      }
+      if (prmt2) {
+        setWaiting(prmt2);
+      }
+    }, 2000);
   };
 
   useEffect(() => {
@@ -105,6 +111,10 @@ export default function GameElement() {
   useEffect(() => {
     handleOutcome();
   }, [phase2Cards]);
+
+  useEffect(() => {
+    console.log(waiting);
+  }, [waiting]);
 
   if (phase.phase1) {
     return (
