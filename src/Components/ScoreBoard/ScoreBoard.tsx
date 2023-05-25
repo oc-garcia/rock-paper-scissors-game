@@ -9,7 +9,7 @@ export default function ScoreBoard() {
     <HeaderContainer>
       <img src={logoClassic} alt="logo" />
       <div>
-        <h1>Score</h1>
+        <h1>SCORE</h1>
         <p>{score}</p>
       </div>
     </HeaderContainer>

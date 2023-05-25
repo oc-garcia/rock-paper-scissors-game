@@ -45,7 +45,7 @@ const defaultState = {
 };
 
 export default function GameElement() {
-  const { phase, cards } = useContext(GameContext);
+  const { phase, cards, resetTable } = useContext(GameContext);
   const [phase2Cards, setPhase2Cards] = useState(defaultState);
   const [outCome, setOutCome] = useState<string>();
 
@@ -123,7 +123,13 @@ export default function GameElement() {
         </div>
         <div>
           <h2>{outCome}</h2>
-          <button>PLAY AGAIN</button>
+          <button
+            onClick={() => {
+              resetTable();
+              setPhase2Cards(defaultState);
+            }}>
+            PLAY AGAIN
+          </button>
         </div>
       </Phase2Container>
     );

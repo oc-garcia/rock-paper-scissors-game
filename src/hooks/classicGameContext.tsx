@@ -3,7 +3,6 @@ import React, { Dispatch, SetStateAction, createContext, useState } from "react"
 export interface IPhase {
   phase1: boolean;
   phase2: boolean;
-  phase3: boolean;
 }
 
 export interface Icards {
@@ -15,8 +14,7 @@ export interface IGameContext {
   phase: IPhase;
   setPhase?: Dispatch<SetStateAction<IPhase>>;
   handlePhase1: (prmt: string) => void;
-  handlePhase2: (prmt: string) => void;
-  handlePhase3: (prmt: string) => void;
+  resetTable: () => void;
   cards: Icards;
   setCards?: (cards: Icards) => void;
   elementPicker?: (prmt: string) => void;
@@ -28,7 +26,6 @@ const defaultState = {
   phase: {
     phase1: true,
     phase2: false,
-    phase3: false,
   },
   cards: {
     player: "",
@@ -43,7 +40,6 @@ export const GameProvider = ({ children }: { children: React.ReactNode }) => {
   const [phase, setPhase] = useState<IPhase>({
     phase1: true,
     phase2: false,
-    phase3: false,
   });
 
   const [cards, setCards] = useState<Icards>({
@@ -65,23 +61,15 @@ export const GameProvider = ({ children }: { children: React.ReactNode }) => {
 
   const handlePhase1 = (prmt: string) => {
     elementPicker(prmt);
-    setPhase({ ...phase, phase1: false, phase2: true });
+    setPhase({ phase1: false, phase2: true });
   };
 
-  const handlePhase2 = () => {
-    setPhase({ ...phase, phase2: false, phase3: true });
-  };
-
-  const handlePhase3 = () => {
-    setPhase({
-      phase1: true,
-      phase2: false,
-      phase3: false,
-    });
+  const resetTable = () => {
+    setPhase({ phase1: true, phase2: false });
   };
 
   return (
-    <GameContext.Provider value={{ phase, handlePhase1, handlePhase2, handlePhase3, cards, score, setScore }}>
+    <GameContext.Provider value={{ phase, handlePhase1, resetTable, cards, score, setScore }}>
       {children}
     </GameContext.Provider>
   );

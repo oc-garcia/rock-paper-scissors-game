@@ -17,7 +17,7 @@ export const HeaderContainer = styled.header`
   & div {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     flex-direction: column;
     background-color: white;
     padding: 0.5rem;
@@ -25,9 +25,14 @@ export const HeaderContainer = styled.header`
     width: 40%;
     border-radius: 10px;
 
+    & h1 {
+      color: var(--Score-Text);
+      letter-spacing: 1px;
+    }
+
     & p {
       font-size: 3rem;
-      color: hsl(229, 25%, 31%);
+      color: var(--Dark-Text);
     }
   }
 `;
