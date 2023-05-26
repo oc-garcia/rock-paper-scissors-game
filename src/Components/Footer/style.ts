@@ -31,10 +31,12 @@ export const ModalContainer = styled.div`
   }
 
   & img {
+    margin-top: 2rem;
     width: 100%;
   }
 
   & img:last-child {
+    margin-top: 2rem;
     width: 10%;
   }
 `;
