@@ -52,7 +52,6 @@ export const GameProvider = ({ children }: { children: React.ReactNode }) => {
 
   const elementPicker = (prmt: string) => {
     const options = ["paper", "scissor", "rock"];
-
     const randomIndex = Math.floor(Math.random() * 3);
     setCards({
       player: prmt,
@@ -61,8 +60,8 @@ export const GameProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const handlePhase1 = (prmt: string) => {
-    elementPicker(prmt);
     setPhase({ phase1: false, phase2: true });
+    elementPicker(prmt);
   };
 
   const resetTable = () => {

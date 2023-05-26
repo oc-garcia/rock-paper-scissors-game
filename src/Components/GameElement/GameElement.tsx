@@ -72,36 +72,29 @@ export default function GameElement() {
   const handleOutcome = () => {
     if (phase2Cards.player.name === phase2Cards.pc.name) {
       setOutCome("DRAW");
+      handleWaiting(0);
     } else if (
       (phase2Cards.player.name === "paper" && phase2Cards.pc.name === "rock") ||
       (phase2Cards.player.name === "rock" && phase2Cards.pc.name === "scissor") ||
       (phase2Cards.player.name === "scissor" && phase2Cards.pc.name === "paper")
     ) {
       setOutCome("YOU WIN");
-      if (phase.phase2) {
-        handleWaiting(1, true);
-      }
+      handleWaiting(1);
     } else if (
       (phase2Cards.pc.name === "paper" && phase2Cards.player.name === "rock") ||
       (phase2Cards.pc.name === "rock" && phase2Cards.player.name === "scissor") ||
       (phase2Cards.pc.name === "scissor" && phase2Cards.player.name === "paper")
     ) {
       setOutCome("YOU LOSE");
-      if (phase.phase2) {
-        handleWaiting(-1, true);
-      }
+      handleWaiting(-1);
     }
   };
 
-  const handleWaiting = (prmt: number, prmt2: boolean) => {
+  const handleWaiting = (prmt: number) => {
     setTimeout(() => {
-      if (prmt) {
-        handleScore(prmt);
-      }
-      if (prmt2) {
-        setWaiting(prmt2);
-      }
-    }, 2000);
+      setWaiting(true);
+      handleScore(prmt);
+    }, 1500);
   };
 
   useEffect(() => {
@@ -112,9 +105,7 @@ export default function GameElement() {
     handleOutcome();
   }, [phase2Cards]);
 
-  useEffect(() => {
-    console.log(waiting);
-  }, [waiting]);
+  useEffect(() => {}, [waiting]);
 
   if (phase.phase1) {
     return (
@@ -150,9 +141,9 @@ export default function GameElement() {
             <h2>{outCome}</h2>
             <button
               onClick={() => {
-                resetTable();
-                setPhase2Cards(defaultState);
                 setWaiting(false);
+                setPhase2Cards(defaultState);
+                resetTable();
               }}>
               PLAY AGAIN
             </button>

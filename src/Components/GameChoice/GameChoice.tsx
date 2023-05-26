@@ -1,10 +1,11 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { IGameElements } from "../../types/IGameElement";
 import { GameChoiceContainer } from "./styles";
 import { GameContext } from "../../hooks/classicGameContext";
 
 export default function GameChoice({ icon, element, borderColor }: IGameElements) {
   const { phase, handlePhase1 } = useContext(GameContext);
+  useEffect(() => {}, [phase]);
   return (
     <GameChoiceContainer
       onClick={() => {
