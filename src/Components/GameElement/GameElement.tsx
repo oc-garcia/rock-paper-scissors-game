@@ -7,6 +7,7 @@ import paperIcon from "./icon-paper.svg";
 import rockIcon from "./icon-rock.svg";
 import scissorIcon from "./icon-scissors.svg";
 import { IHand } from "../../types/types";
+import GameChoiceShadow from "../GameChoiceShadow/GameChoiceShadow";
 
 const tableSetup = [
   {
@@ -43,7 +44,7 @@ export default function GameElement() {
   const { phase, cards, resetTable, handleScore } = useContext(GameContext);
   const [phase2Cards, setPhase2Cards] = useState(defaultState);
   const [outCome, setOutcome] = useState<string>();
-  const [waiting, setWaiting] = useState<boolean>(false);
+  const [waiting, setWaiting] = useState<boolean>(true);
 
   const handleTable2 = () => {
     const playerSetup = tableSetup.filter((key) => key.name === cards.player);
@@ -87,9 +88,9 @@ export default function GameElement() {
 
   const handleWaiting = (prmt: number) => {
     setTimeout(() => {
-      setWaiting(true);
+      setWaiting(false);
       handleScore(prmt);
-    }, 1500);
+    }, 2500);
   };
 
   useEffect(() => {
@@ -126,23 +127,34 @@ export default function GameElement() {
           </div>
           {waiting && (
             <div>
+              <GameChoiceShadow />
+              <p>THE HOUSE PICKED</p>
+            </div>
+          )}
+          {!waiting && (
+            <div>
               <GameChoice icon={phase2Cards.pc.icon} element={phase2Cards.pc.name} borderColor={phase2Cards.pc.color} />
               <p>THE HOUSE PICKED</p>
             </div>
           )}
         </div>
-        {waiting && (
+        {!waiting ? (
           <div>
             <h2>{outCome}</h2>
             <button
               onClick={() => {
-                setWaiting(false);
+                setWaiting(true);
                 setPhase2Cards(defaultState);
                 resetTable();
               }}>
               PLAY AGAIN
             </button>
           </div>
+        ) : (
+          <span>
+            <h2>CONCEALED</h2>
+            <button>CONCEALED</button>
+          </span>
         )}
       </Phase2Container>
     );

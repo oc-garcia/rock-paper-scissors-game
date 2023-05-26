@@ -56,4 +56,25 @@ export const Phase2Container = styled.section`
   & div:last-child {
     flex-direction: column;
   }
+
+  span:last-child {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 1rem 2rem;
+
+    & h2 {
+      margin-top: 3rem;
+      font-size: 3.5rem;
+      opacity: 0;
+    }
+
+    & button {
+      padding: 1rem 5rem;
+      border-radius: 10px;
+      border: none;
+      opacity: 0;
+    }
+  }
 `;
