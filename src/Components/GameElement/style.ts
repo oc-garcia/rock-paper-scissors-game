@@ -9,7 +9,7 @@ export const Phase1Container = styled.section`
   align-items: center;
   justify-content: space-around;
   background: url(${classicBg}) no-repeat center;
-  background-size: 80%;
+  background-size: 75%;
   flex-wrap: wrap;
 
   @media only screen and (min-width: 1000px) {
