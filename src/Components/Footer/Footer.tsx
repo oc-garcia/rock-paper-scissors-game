@@ -24,6 +24,7 @@ export default function Footer() {
           content: {
             display: "flex",
             alignItems: "center",
+            justifyContent: "center",
             padding: "1rem",
             height: "50vh",
           },

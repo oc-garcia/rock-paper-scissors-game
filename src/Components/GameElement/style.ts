@@ -3,7 +3,7 @@ import classicBg from "./bg-triangle.svg";
 
 export const Phase1Container = styled.section`
   margin: 15vh 0;
-  height: 40vh;
+  height: 35vh;
   width: 90vw;
   display: flex;
   align-items: center;
@@ -11,6 +11,12 @@ export const Phase1Container = styled.section`
   background: url(${classicBg}) no-repeat center;
   background-size: 80%;
   flex-wrap: wrap;
+
+  @media only screen and (min-width: 1000px) {
+    margin: 15vh 0;
+    background-size: 70%;
+    width: 25vw;
+  }
 `;
 
 export const Phase2Container = styled.section`

@@ -35,4 +35,26 @@ export const HeaderContainer = styled.header`
       color: var(--Dark-Text);
     }
   }
+
+  @media only screen and (min-width: 1000px) {
+    width: 50vw;
+
+    & img {
+      height: 90%;
+    }
+
+    & div {
+      height: 95%;
+      width: 15%;
+
+      & h1 {
+        font-size: 1.2rem;
+      }
+
+      & p {
+        font-size: 4rem;
+        color: var(--Dark-Text);
+      }
+    }
+  }
 `;

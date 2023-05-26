@@ -39,4 +39,8 @@ export const ModalContainer = styled.div`
     margin-top: 2rem;
     width: 10%;
   }
+
+  @media only screen and (min-width: 1000px) {
+    width: 10rem;
+  }
 `;
