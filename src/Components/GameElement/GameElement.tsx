@@ -6,12 +6,7 @@ import { GameContext } from "../../hooks/classicGameContext";
 import paperIcon from "./icon-paper.svg";
 import rockIcon from "./icon-rock.svg";
 import scissorIcon from "./icon-scissors.svg";
-
-export interface IHand {
-  name: string;
-  icon: string;
-  color: string;
-}
+import { IHand } from "../../types/types";
 
 const tableSetup = [
   {
@@ -47,7 +42,7 @@ const defaultState = {
 export default function GameElement() {
   const { phase, cards, resetTable, handleScore } = useContext(GameContext);
   const [phase2Cards, setPhase2Cards] = useState(defaultState);
-  const [outCome, setOutCome] = useState<string>();
+  const [outCome, setOutcome] = useState<string>();
   const [waiting, setWaiting] = useState<boolean>(false);
 
   const handleTable2 = () => {
@@ -71,21 +66,21 @@ export default function GameElement() {
 
   const handleOutcome = () => {
     if (phase2Cards.player.name === phase2Cards.pc.name) {
-      setOutCome("DRAW");
+      setOutcome("DRAW");
       handleWaiting(0);
     } else if (
       (phase2Cards.player.name === "paper" && phase2Cards.pc.name === "rock") ||
       (phase2Cards.player.name === "rock" && phase2Cards.pc.name === "scissor") ||
       (phase2Cards.player.name === "scissor" && phase2Cards.pc.name === "paper")
     ) {
-      setOutCome("YOU WIN");
+      setOutcome("YOU WIN");
       handleWaiting(1);
     } else if (
       (phase2Cards.pc.name === "paper" && phase2Cards.player.name === "rock") ||
       (phase2Cards.pc.name === "rock" && phase2Cards.player.name === "scissor") ||
       (phase2Cards.pc.name === "scissor" && phase2Cards.player.name === "paper")
     ) {
-      setOutCome("YOU LOSE");
+      setOutcome("YOU LOSE");
       handleWaiting(-1);
     }
   };

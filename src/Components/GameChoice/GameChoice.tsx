@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import { IGameElements } from "../../types/IGameElement";
+import { IGameElements } from "../../types/types";
 import { GameChoiceContainer } from "./styles";
 import { GameContext } from "../../hooks/classicGameContext";
 
