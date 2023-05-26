@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 
 interface Props {
   border: string;
-  winner: string;
+  winner: string | undefined;
 }
 
 export const GameChoiceContainer = styled.span<Props>`

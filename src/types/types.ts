@@ -4,7 +4,7 @@ export interface IGameElements {
   icon: string;
   element: string;
   borderColor: string;
-  winner?: boolean;
+  winner?: boolean | string;
 }
 
 export interface IHand {
