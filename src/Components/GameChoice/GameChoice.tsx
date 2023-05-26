@@ -3,7 +3,7 @@ import { IGameElements } from "../../types/types";
 import { GameChoiceContainer } from "./styles";
 import { GameContext } from "../../hooks/classicGameContext";
 
-export default function GameChoice({ icon, element, borderColor }: IGameElements) {
+export default function GameChoice({ icon, element, borderColor, winner }: IGameElements) {
   const { phase, handlePhase1 } = useContext(GameContext);
   useEffect(() => {}, [phase]);
   return (
@@ -13,7 +13,8 @@ export default function GameChoice({ icon, element, borderColor }: IGameElements
           handlePhase1(element);
         }
       }}
-      border={`${borderColor}`}>
+      border={`${borderColor}`}
+      winner={winner?.toString()}>
       <img src={icon} alt={element} />
     </GameChoiceContainer>
   );

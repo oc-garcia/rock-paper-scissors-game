@@ -27,7 +27,7 @@ const tableSetup = [
   },
 ];
 
-const defaultState = {
+const cardsDefaultState = {
   player: {
     name: "",
     icon: "",
@@ -40,11 +40,17 @@ const defaultState = {
   } as IHand,
 };
 
+const winnerDefaultState = {
+  player: false,
+  pc: false,
+};
+
 export default function GameElement() {
   const { phase, cards, resetTable, handleScore } = useContext(GameContext);
-  const [phase2Cards, setPhase2Cards] = useState(defaultState);
+  const [phase2Cards, setPhase2Cards] = useState(cardsDefaultState);
   const [outCome, setOutcome] = useState<string>();
   const [waiting, setWaiting] = useState<boolean>(true);
+  const [winner, setWinner] = useState(winnerDefaultState);
 
   const handleTable2 = () => {
     const playerSetup = tableSetup.filter((key) => key.name === cards.player);
@@ -90,7 +96,12 @@ export default function GameElement() {
     setTimeout(() => {
       setWaiting(false);
       handleScore(prmt);
-    }, 2500);
+      if (prmt === -1) {
+        setWinner({ ...winner, pc: true });
+      } else if (prmt === 1) {
+        setWinner({ ...winner, player: true });
+      }
+    }, 2000);
   };
 
   useEffect(() => {
@@ -122,6 +133,7 @@ export default function GameElement() {
               icon={phase2Cards.player.icon}
               element={phase2Cards.player.name}
               borderColor={phase2Cards.player.color}
+              winner={winner.player}
             />
             <p>YOU PICKED</p>
           </div>
@@ -133,7 +145,12 @@ export default function GameElement() {
           )}
           {!waiting && (
             <div>
-              <GameChoice icon={phase2Cards.pc.icon} element={phase2Cards.pc.name} borderColor={phase2Cards.pc.color} />
+              <GameChoice
+                winner={winner.pc}
+                icon={phase2Cards.pc.icon}
+                element={phase2Cards.pc.name}
+                borderColor={phase2Cards.pc.color}
+              />
               <p>THE HOUSE PICKED</p>
             </div>
           )}
@@ -144,8 +161,9 @@ export default function GameElement() {
             <button
               onClick={() => {
                 setWaiting(true);
-                setPhase2Cards(defaultState);
+                setPhase2Cards(cardsDefaultState);
                 resetTable();
+                setWinner(winnerDefaultState);
               }}>
               PLAY AGAIN
             </button>
