@@ -9,6 +9,13 @@ Modal.setAppElement("#root");
 export default function Footer() {
   const [modal, setModal] = useState<boolean>(false);
 
+  function isSmallScreen(): Boolean {
+    if (typeof window !== "undefined") {
+      return window.innerWidth < 768;
+    }
+    return false;
+  }
+
   const handleModal = () => {
     setModal(!modal);
   };
@@ -22,21 +29,19 @@ export default function Footer() {
         contentLabel="Rules"
         style={{
           content: {
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: "1rem",
+            top: "50%",
+            left: "50%",
+            right: "auto",
+            bottom: "auto",
+            marginRight: "-50%",
+            transform: "translate(-50%, -50%)",
             height: "50vh",
+            overflow: "none",
+            width: isSmallScreen() ? "98vw" : "",
           },
           overlay: {
-            position: "absolute",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            top: "25%",
-            left: "20%",
-            width: "60%",
-            height: "56%",
+            width: "100%",
+            height: "100%",
           },
         }}>
         <ModalContainer>
