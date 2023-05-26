@@ -28,6 +28,16 @@ export default function Footer() {
             padding: "1rem",
             height: "50vh",
           },
+          overlay: {
+            position: "absolute",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            top: "25%",
+            left: "20%",
+            width: "60%",
+            height: "56%",
+          },
         }}>
         <ModalContainer>
           <h2>RULES</h2>
