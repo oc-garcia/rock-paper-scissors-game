@@ -6,9 +6,8 @@ This project is a simple implementation of the popular game "Rock-Paper-Scissors
 
 - [Installation](#installation)
 - [Usage](#usage)
-- [Dependencies](#dependencies)
+- [Dependencies](#stack)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Installation
 
