@@ -9,9 +9,9 @@ Modal.setAppElement("#root");
 export default function Footer() {
   const [modal, setModal] = useState<boolean>(false);
 
-  function isSmallScreen(): Boolean {
+  function isBigScreen(): Boolean {
     if (typeof window !== "undefined") {
-      return window.innerWidth < 768;
+      return window.innerWidth > 768;
     }
     return false;
   }
@@ -35,9 +35,9 @@ export default function Footer() {
             bottom: "auto",
             marginRight: "-50%",
             transform: "translate(-50%, -50%)",
-            height: "50vh",
+            height: "70vh",
             overflow: "none",
-            width: isSmallScreen() ? "98vw" : "",
+            width: isBigScreen() ? "98vw" : "",
           },
           overlay: {
             width: "100%",
