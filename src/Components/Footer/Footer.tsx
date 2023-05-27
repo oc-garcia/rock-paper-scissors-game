@@ -29,6 +29,9 @@ export default function Footer() {
         contentLabel="Rules"
         style={{
           content: {
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
             top: "50%",
             left: "50%",
             right: "auto",
