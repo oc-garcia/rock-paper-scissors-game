@@ -1,7 +1,5 @@
 # Rock-Paper-Scissors Game
 
-![Rock-Paper-Scissors](https://github.com/oc-garcia/rock-paper-scissors-game/blob/main/assets/rps.png)
-
 This project is a simple implementation of the popular game "Rock-Paper-Scissors" using React, TypeScript, Vite, Modal React Lib, Styled Components, and Context API. It allows users to play the game against the computer and keeps track of the score.
 
 ## Table of Contents
@@ -66,5 +64,8 @@ All dependencies are listed in the package.json file.
 
 ## Contributing
 Contributions to this project are welcome! If you have any ideas or improvements, feel free to open an issue or submit a pull request.
+
+## Project Image
+![](./public/assets/design/Captura%20de%20tela%20de%202023-05-27%2009-57-23.png#vitrinedev)
 
 
