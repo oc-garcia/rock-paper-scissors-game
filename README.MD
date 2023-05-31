@@ -13,29 +13,13 @@ This project is a simple implementation of the popular game "Rock-Paper-Scissors
 
 To use this project, follow the steps below:
 
-1. Clone the repository:
+1. Clone the repository: `git clone https://github.com/oc-garcia/rock-paper-scissors-game.git`
 
-```
-git clone https://github.com/oc-garcia/rock-paper-scissors-game.git
-```
+2. Navigate to the project directory: `cd rock-paper-scissors-game`
 
-2. Navigate to the project directory:
+3. Install the dependencies: `npm install`
 
-```
-cd rock-paper-scissors-game
-```
-
-3. Install the dependencies:
-
-```
-npm install
-```
-
-Run the game:
-
-```
-npm run dev
-```
+Run the game: `npm run dev`
 
 Open your browser and visit the localhost apointed by your terminal to play the Rock-Paper-Scissors game!
 
