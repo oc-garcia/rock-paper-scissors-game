@@ -9,8 +9,8 @@ function AppRouter() {
     <BrowserRouter>
       <GameProvider>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/classic" element={<ClassicGame />} />
+          <Route path="/teste" element={<Home />} />
+          <Route path="/" element={<ClassicGame />} />
           <Route path="/LizardSpock" element={<LizardSpock />} />
         </Routes>
       </GameProvider>
