@@ -2,6 +2,8 @@
 
 This project is a simple implementation of the popular game "Rock-Paper-Scissors" using React, TypeScript, Vite, Modal React Lib, Styled Components, and Context API. It allows users to play the game against the computer and keeps track of the score.
 
+"Rock-Paper-Scissors-Lizard-Spock" under development.
+
 ## Table of Contents
 
 - [Installation](#installation)
